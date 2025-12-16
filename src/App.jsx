@@ -56,7 +56,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <h2>🍑 Welcome to the Orchard!</h2>
+      <h2>🍑 Welcome to the Orchard! v2</h2>
       
       <div className="wallet-info">
         <p><strong>Connected:</strong></p>
