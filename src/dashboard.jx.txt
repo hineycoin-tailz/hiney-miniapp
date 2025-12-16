@@ -1,0 +1,40 @@
+import React, { useEffect, useState } from 'react';
+import { useConnection, useWallet } from '@solana/wallet-adapter-react';
+import { LAMPORTS_PER_SOL } from '@solana/web3.js';
+
+export const Dashboard = () => {
+  const { connection } = useConnection();
+  const { publicKey } = useWallet();
+  const [balance, setBalance] = useState(0);
+
+  useEffect(() => {
+    if (!connection || !publicKey) return;
+
+    connection.getBalance(publicKey).then((info) => {
+      setBalance(info / LAMPORTS_PER_SOL);
+    });
+  }, [connection, publicKey]);
+
+  return (
+    <div className="dashboard">
+      <h2>🍑 Welcome to the Orchard!</h2>
+      
+      <div className="wallet-info">
+        <p><strong>Connected:</strong></p>
+        <p className="address">{publicKey.toBase58().substring(0, 6)}...{publicKey.toBase58().substring(38)}</p>
+      </div>
+
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h3>SOL Balance</h3>
+          <p>{balance.toFixed(4)} SOL</p>
+        </div>
+        
+        <div className="stat-card">
+          <h3>Hiney Points</h3>
+          <p>0 PTS</p> 
+        </div>
+      </div>
+    </div>
+  );
+};
