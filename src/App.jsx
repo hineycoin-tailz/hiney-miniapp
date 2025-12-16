@@ -4,10 +4,10 @@ import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { PhantomWalletAdapter, SolflareWalletAdapter } from '@solana/wallet-adapter-wallets';
 import { WalletModalProvider, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl, LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
+import { WalletConnectWalletAdapter } from '@solana/wallet-adapter-walletconnect';
 
 import '@solana/wallet-adapter-react-ui/styles.css';
-import { WalletConnectWalletAdapter } from '@solana/wallet-adapter-walletconnect';
-import './App.css'; 
+import './App.css';
 
 // ⬇️ PASTE YOUR HELIUS LINK INSIDE THESE QUOTES ⬇️
 const HELIUS_RPC_URL = "https://mainnet.helius-rpc.com/?api-key=1d8e8a5c-20b5-44aa-8023-0c8173bd6e2d";
@@ -114,7 +114,7 @@ function App() {
     () => [
         new PhantomWalletAdapter(),
         new SolflareWalletAdapter(),
-        // 👇 ADD THIS NEW CHUNK HERE:
+        // WalletConnect Adapter
         new WalletConnectWalletAdapter({
             network: WalletAdapterNetwork.Mainnet,
             options: {
@@ -123,7 +123,6 @@ function App() {
         }),
     ],
     [network]
-);
   );
 
   return (
