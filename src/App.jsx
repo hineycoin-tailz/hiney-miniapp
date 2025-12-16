@@ -1,3 +1,7 @@
+import { Buffer } from 'buffer';
+window.global = window;
+window.Buffer = Buffer;
+window.process = { env: {} };
 import React, { useMemo, useEffect, useState } from 'react';
 import { ConnectionProvider, WalletProvider, useWallet, useConnection } from '@solana/wallet-adapter-react';
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
