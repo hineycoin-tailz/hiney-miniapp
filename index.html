@@ -1,15 +1,22 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Hiney App</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Hiney App</title>
+
     <script>
       window.global = window;
       window.process = { env: {} };
     </script>
-    
-  </head>
-  <body>
+    <script type="module">
+        import { Buffer } from 'https://esm.sh/buffer@6.0.3';
+        window.Buffer = Buffer;
+    </script>
+    </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
